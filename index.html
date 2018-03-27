@@ -64,10 +64,9 @@ DAMAGE.
 <!--{{{-->
 <link rel='alternate' type='application/rss+xml' title='RSS' href='index.xml' />
 <!--}}}-->
-<!--PRE-HEAD-END-->
-<title>
 
-</title>
+<!--PRE-HEAD-END-->
+<title> My TiddlyWiki - a reusable non-linear personal web notebook </title>
 <style id="styleArea" type="text/css">
 #saveTest {display:none;}
 #messageArea {display:none;}
@@ -78,10 +77,12 @@ DAMAGE.
 #javascriptWarning {width:100%; text-align:center; font-weight:bold; background-color:#dd1100; color:#fff; padding:1em 0em;}
 </style>
 <!--POST-HEAD-START-->
+
 <!--POST-HEAD-END-->
 </head>
 <body onload="main();" onunload="if(window.checkUnsavedChanges) checkUnsavedChanges(); if(window.scrubNodes) scrubNodes(document.body);">
 <!--PRE-BODY-START-->
+
 <!--PRE-BODY-END-->
 <div id="copyright">
 Welcome to TiddlyWiki created by Jeremy Ruston, Copyright &copy; 2007 UnaMesa Association
@@ -534,6 +535,31 @@ Also see [[AdvancedOptions]]</pre>
 </div>
 <!--POST-SHADOWAREA-->
 <div id="storeArea">
+<div title="backstagesidebar" modifier="YourName" created="201803270756" tags="systemConfig" changecount="1">
+<pre>if(!version.extensions.BackstageSidebarPlugin) {
+version.extensions.BackstageSidebarPlugin = {installed:true};
+
+config.tasks.sidebar = {
+	text: &quot;sidebar&quot;,
+	tooltip: &quot;sidebar options&quot;,
+	content: &quot;&lt;&lt;tiddler SideBarOptions&gt;&gt;&lt;&lt;tiddler SideBarTabs&gt;&gt;&quot;
+};
+config.backstageTasks.push(&quot;sidebar&quot;);
+
+config.macros.BackstageSidebarPlugin = {
+	tiddler:tiddler
+};
+
+config.macros.BackstageSidebarPlugin.init = function() {
+	var tiddler = this.tiddler;
+	setStylesheet(store.getTiddlerText(tiddler.title+'##Stylesheet'),'BackstageSidebarPlugin');
+};
+
+} //# end of 'install only once'</pre>
+</div>
+<div title="config" modifier="YourName" created="201803270803" modified="201803270813" tags="systemConfig" changecount="4">
+<pre>config.options.chkShowRightSidebar=false;</pre>
+</div>
 </div>
 <!--POST-STOREAREA-->
 <!--POST-BODY-START-->
@@ -9423,6 +9449,7 @@ if(useJavaSaver)
 //]]>
 </script>
 <!--POST-SCRIPT-START-->
+
 <!--POST-SCRIPT-END-->
 </body>
 </html>
